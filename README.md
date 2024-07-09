@@ -27,8 +27,8 @@ This is a simple Node.js application for managing users. It allows you to add, r
 
 ## Requirements
 - Node.js (v14 or higher)
-- MongoDB
-- Docker (optional, for containerization)
+- MongoDB (BD)
+- Docker (for containerization)
 
 ## Installation
 1. Clone the repository:
@@ -48,13 +48,26 @@ This is a simple Node.js application for managing users. It allows you to add, r
     MONGO_URL=mongodb://localhost:27017/nodejs-app
     ```
 
-## Running the Application
+## Running the Application Localy
 1. Start MongoDB:
-    Ensure MongoDB is running on your local machine or in a Docker container.
+    Ensure MongoDB is running on your local machine
 
 2. Start the application:
     ```sh
     npm start
+    ```
+## Running the Application with Docker
+1. Setup Docker:
+    Ensure Docker is installed in your computer 
+        and running well.
+
+2. Run app:
+    ```sh
+    docker compose build
+    ```
+    then:
+    ```sh
+    docker compose up
     ```
 
 3. Open your browser and navigate to `http://localhost:3000`.

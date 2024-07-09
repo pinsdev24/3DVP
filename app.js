@@ -31,6 +31,10 @@ app.set('views', path.join(__dirname, 'views'));
 const usersRoutes = require('./routes/users');
 app.use('/users', usersRoutes);
 
+app.get('/', (req, res) => {
+    res.redirect('/users');
+})
+
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
