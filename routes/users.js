@@ -5,6 +5,7 @@ const User = require('../models/User');
 // Index - Liste des utilisateurs
 router.get('/', async (req, res) => {
     const users = await User.find({});
+    res.status(200)
     res.render('users/index', { users });
 });
 
@@ -17,7 +18,7 @@ router.get('/create', (req, res) => {
 router.post('/', async (req, res) => {
     const user = new User(req.body);
     await user.save();
-    res.redirect('/users');
+    res.status(302).redirect('/users');
 });
 
 // Edit - Formulaire de modification d'un utilisateur
@@ -29,6 +30,7 @@ router.get('/:id/edit', async (req, res) => {
 // Update - Modifier un utilisateur
 router.put('/:id', async (req, res) => {
     await User.findByIdAndUpdate(req.params.id, req.body);
+    res.status(302)
     res.redirect('/users');
 });
 

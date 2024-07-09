@@ -3,17 +3,27 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
+var expressLayouts = require('express-ejs-layouts');
+const path = require('path')
 
 const User = require('../models/User');
 const usersRoutes = require('../routes/users');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+app.use(express.static('public'));
+app.use(expressLayouts);
+
+app.set('view engine', 'ejs');
+app.set('layout', './layouts/main');
+app.set('views', path.join(__dirname, '../views'));
+
 app.use(methodOverride('_method'));
 app.use('/users', usersRoutes);
 
 beforeAll(async () => {
-    await mongoose.connect(global.__MONGO_URI__, {
+    await mongoose.connect('mongodb://localhost:27017/nodejs-app-integration-test', {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
