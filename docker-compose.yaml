@@ -3,20 +3,22 @@ version: '3.8'
 services:
   app:
     build: .
+    image: "prestiliendocker/exam-app:latest"
     ports:
       - "3000:3000"
     depends_on:
       - mongo
     environment:
-      MONGO_URL: mongodb://mongo:27017/nodejs-app
+      MONGO_URL: mongodb://mongo:27018/nodejs-app
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
 
   mongo:
     image: mongo:latest
+    command: mongod --port 27018
     ports:
-      - "27017:27017"
+      - "27018:27018"
     volumes:
       - mongo-data:/data/db
 

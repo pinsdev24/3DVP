@@ -52,7 +52,7 @@ jobs:
       run: npm install
 
     - name: Build Docker image
-      run: docker build -t yourusername/yourapp:latest .
+      run: docker build -t prestiliendocker/exam-app:latest .
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
@@ -61,7 +61,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push Docker image
-      run: docker push yourusername/yourapp:latest
+      run: docker push prestiliendocker/exam-app:latest
 
   notify:
     runs-on: ubuntu-latest

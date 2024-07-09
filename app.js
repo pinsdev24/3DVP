@@ -8,7 +8,8 @@ var expressLayouts = require('express-ejs-layouts');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/nodejs-app', {
+const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/nodejs-app';
+mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
